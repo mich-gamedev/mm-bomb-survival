@@ -1,3 +1,278 @@
-[gd_scene format=3 uid="uid://dgodrsnkfcald"]
+[gd_scene load_steps=11 format=3 uid="uid://dgodrsnkfcald"]
+
+[ext_resource type="PackedScene" uid="uid://vvtltf1wnwk0" path="res://objects/player/player.tscn" id="1_dphjl"]
+[ext_resource type="Shader" uid="uid://cmwh63opj4vnq" path="res://resources/shaders/bubble_noise.gdshader" id="1_sl2e5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rhad"]
+bg_color = Color(0.23529412, 0.21960784, 0.21176471, 1)
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.19607843, 0.1882353, 0.18431373, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_1fp7r"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6m72w"]
+gradient = SubResource("Gradient_1fp7r")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_v5dby"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t5ptc"]
+gradient = SubResource("Gradient_v5dby")
+fill_to = Vector2(0, 0.2)
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bq33v"]
+shader = ExtResource("1_sl2e5")
+shader_parameter/noise_texture = SubResource("GradientTexture2D_t5ptc")
+shader_parameter/gradient = SubResource("GradientTexture2D_6m72w")
+shader_parameter/scroll_speed = Vector2(0, -1)
+shader_parameter/alpha_gate = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dphjl"]
+bg_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+border_width_bottom = 2
+border_color = Color(0.08123779, 0.08476257, 0.0859375, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_dphjl"]
+font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+outline_size = 4
+outline_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+shadow_size = 2
+shadow_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+shadow_offset = Vector2(0, 1.5)
 
 [node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="Room" type="Panel" parent="."]
+offset_left = 64.0
+offset_right = 576.0
+offset_bottom = 328.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4rhad")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bq33v")
+offset_left = 67.0
+offset_right = 573.0
+offset_bottom = 40.0
+color = Color(0.19607843, 0.1882353, 0.18431373, 1)
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Brick" type="Panel" parent="Bricks"]
+offset_left = 32.0
+offset_top = 190.0
+offset_right = 66.0
+offset_bottom = 208.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick2" type="Panel" parent="Bricks"]
+offset_left = 574.0
+offset_top = 90.0
+offset_right = 608.0
+offset_bottom = 108.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick3" type="Panel" parent="Bricks"]
+offset_left = 547.0
+offset_top = 326.0
+offset_right = 581.0
+offset_bottom = 344.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick13" type="Panel" parent="Bricks"]
+offset_left = 521.0
+offset_top = 345.0
+offset_right = 555.0
+offset_bottom = 363.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick14" type="Panel" parent="Bricks"]
+offset_left = 559.0
+offset_top = 345.0
+offset_right = 593.0
+offset_bottom = 363.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick4" type="Panel" parent="Bricks"]
+offset_left = 573.0
+offset_top = 306.0
+offset_right = 597.0
+offset_bottom = 324.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick5" type="Panel" parent="Bricks"]
+offset_left = 584.0
+offset_top = 326.0
+offset_right = 613.0
+offset_bottom = 344.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick6" type="Panel" parent="Bricks"]
+offset_left = 45.0
+offset_top = 7.0
+offset_right = 66.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick7" type="Panel" parent="Bricks"]
+offset_left = 32.0
+offset_top = 27.0
+offset_right = 66.0
+offset_bottom = 45.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick8" type="Panel" parent="Bricks"]
+offset_left = 586.0
+offset_top = 110.0
+offset_right = 620.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick9" type="Panel" parent="Bricks"]
+offset_left = 611.0
+offset_top = 90.0
+offset_right = 636.0
+offset_bottom = 108.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick10" type="Panel" parent="Bricks"]
+offset_left = 600.0
+offset_top = 69.0
+offset_right = 634.0
+offset_bottom = 87.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick11" type="Panel" parent="Bricks"]
+offset_left = 10.0
+offset_top = 212.0
+offset_right = 44.0
+offset_bottom = 230.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Brick12" type="Panel" parent="Bricks"]
+offset_left = 49.0
+offset_top = 212.0
+offset_right = 66.0
+offset_bottom = 230.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
+
+[node name="Player" parent="." instance=ExtResource("1_dphjl")]
+position = Vector2(139, 315)
+
+[node name="Positions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="1" type="Label" parent="Positions"]
+offset_left = 63.0
+offset_top = 332.0
+offset_right = 117.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴1╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="2" type="Label" parent="Positions"]
+offset_left = 114.0
+offset_top = 332.0
+offset_right = 168.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴2╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="3" type="Label" parent="Positions"]
+offset_left = 165.0
+offset_top = 332.0
+offset_right = 219.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴3╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="4" type="Label" parent="Positions"]
+offset_left = 216.0
+offset_top = 332.0
+offset_right = 270.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴4╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="5" type="Label" parent="Positions"]
+offset_left = 267.0
+offset_top = 332.0
+offset_right = 321.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴5╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="6" type="Label" parent="Positions"]
+offset_left = 318.0
+offset_top = 332.0
+offset_right = 372.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴6╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="7" type="Label" parent="Positions"]
+offset_left = 369.0
+offset_top = 332.0
+offset_right = 423.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴7╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="8" type="Label" parent="Positions"]
+offset_left = 420.0
+offset_top = 332.0
+offset_right = 474.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴8╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="9" type="Label" parent="Positions"]
+offset_left = 471.0
+offset_top = 332.0
+offset_right = 525.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴9╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1
+
+[node name="0" type="Label" parent="Positions"]
+offset_left = 522.0
+offset_top = 332.0
+offset_right = 576.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
+text = "╰╴0╶╯"
+label_settings = SubResource("LabelSettings_dphjl")
+horizontal_alignment = 1

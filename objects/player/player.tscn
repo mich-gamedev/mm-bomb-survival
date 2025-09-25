@@ -1,3 +1,102 @@
-[gd_scene format=3 uid="uid://vvtltf1wnwk0"]
+[gd_scene load_steps=5 format=3 uid="uid://vvtltf1wnwk0"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/ring_draw.gd" id="1_cqmt1"]
+[ext_resource type="Script" uid="uid://dm861yayksxec" path="res://objects/player/player.gd" id="1_g7ett"]
+[ext_resource type="Script" uid="uid://bfdtp1ueqngy8" path="res://components/health/hitbox.gd" id="3_jnjyq"]
+[ext_resource type="Script" uid="uid://btoi6jrnw5aeg" path="res://components/health/health.gd" id="4_gnkmh"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_g7ett")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Shadow" type="Node2D" parent="Sprite"]
+position = Vector2(0, 4)
+scale = Vector2(1, 0.75)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 10.0
+draw_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+fill_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="OutlineClip" type="Node2D" parent="Sprite"]
+clip_children = 1
+position = Vector2(0, -7)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 16.0
+draw_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+fill_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Outline" type="Node2D" parent="Sprite/OutlineClip"]
+position = Vector2(0, 4)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 14.0
+draw_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+fill_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Body" type="Node2D" parent="Sprite"]
+position = Vector2(0, -3)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 12.0
+draw_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+fill_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Body2" type="Node2D" parent="Sprite"]
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(1, 0.75)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 12.0
+draw_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+fill_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Body3" type="ColorRect" parent="Sprite"]
+offset_left = -12.0
+offset_top = -3.0
+offset_right = 12.0
+color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+
+[node name="LeftEye" type="Node2D" parent="Sprite"]
+position = Vector2(-10, -7)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 2.0
+fill_color = Color(0.11372549, 0.1254902, 0.12941177, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RightEye" type="Node2D" parent="Sprite"]
+position = Vector2(3, 1)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 2.0
+fill_color = Color(0.11372549, 0.1254902, 0.12941177, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="LeftEyeFacingRight" type="Node2D" parent="Sprite"]
+position = Vector2(-3, 1)
+
+[node name="LeftEyeFacingLeft" type="Node2D" parent="Sprite"]
+position = Vector2(-10, -7)
+
+[node name="RightEyeFacingRight" type="Node2D" parent="Sprite"]
+position = Vector2(10, -7)
+
+[node name="RightEyeFacingLeft" type="Node2D" parent="Sprite"]
+position = Vector2(3, 1)
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("3_jnjyq")
+health = NodePath("Health")
+metadata/_custom_type_script = "uid://bfdtp1ueqngy8"
+
+[node name="Health" type="Node" parent="Hitbox"]
+script = ExtResource("4_gnkmh")
+metadata/_custom_type_script = "uid://btoi6jrnw5aeg"
