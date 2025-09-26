@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BombPattern" load_steps=6 format=3 uid="uid://c84wtp7ay7wa4"]
+
+[ext_resource type="Script" uid="uid://cqlrx2ay12m5f" path="res://resources/bomb_pattern/bomb_data.gd" id="1_afs3v"]
+[ext_resource type="Script" uid="uid://d2bvc7ndv3pyf" path="res://resources/bomb_pattern/bomb_pattern.gd" id="2_75i1m"]
+[ext_resource type="PackedScene" uid="uid://r1xb4yyd3200" path="res://objects/attacks/basic_bomb/bomb.tscn" id="2_jo8wa"]
+
+[sub_resource type="Resource" id="Resource_eyycj"]
+script = ExtResource("1_afs3v")
+scene = ExtResource("2_jo8wa")
+possible_positions = 4
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_iq54b"]
+script = ExtResource("1_afs3v")
+scene = ExtResource("2_jo8wa")
+possible_positions = 128
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[resource]
+script = ExtResource("2_75i1m")
+data = Array[ExtResource("1_afs3v")]([SubResource("Resource_eyycj"), SubResource("Resource_iq54b")])
+metadata/_custom_type_script = "uid://d2bvc7ndv3pyf"

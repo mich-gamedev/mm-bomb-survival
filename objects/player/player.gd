@@ -29,6 +29,8 @@ func _ready() -> void:
 		auth_label.label_settings.font_size = 16
 		auth_label.label_settings.font_color = SELF_COLOR
 		auth_label.text = "YOU (%s)" % Lobby.local_data.name
+		#await auth_label.resized
+		#auth_label.position.x = auth_label.size.x/2
 		z_index = 10
 		rpc_timer.start()
 	else:
@@ -37,6 +39,8 @@ func _ready() -> void:
 		auth_label.label_settings.font_size = 12
 		auth_label.label_settings.font_color = OPP_COLOR
 		auth_label.text = Lobby.players[get_multiplayer_authority()].name
+		#await auth_label.resized
+		#auth_label.position.x = auth_label.size.x/2
 		z_index = 0
 	sprite.top_level = true
 	sprite.global_position = global_position
