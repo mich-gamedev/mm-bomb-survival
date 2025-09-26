@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dor6ft0eisk3q"
-path="res://.godot/imported/CourierPrime-BoldItalic.ttf-1d50c423a48ea3d074d018a47f0e119b.fontdata"
+uid="uid://dbrr57erdx1e5"
+path="res://.godot/imported/CourierPrime-Regular.ttf-2be200621d031274f346bc336ba84a7f.fontdata"
 
 [deps]
 
-source_file="res://CourierPrime-BoldItalic.ttf"
-dest_files=["res://.godot/imported/CourierPrime-BoldItalic.ttf-1d50c423a48ea3d074d018a47f0e119b.fontdata"]
+source_file="res://assets/CourierPrime-Regular.ttf"
+dest_files=["res://.godot/imported/CourierPrime-Regular.ttf-2be200621d031274f346bc336ba84a7f.fontdata"]
 
 [params]
 
@@ -16,7 +16,7 @@ Rendering=null
 antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
+multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
@@ -30,7 +30,13 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+&"variation_embolden": 0.0
+}]
 language_support={}
 script_support={}
 opentype_features={}

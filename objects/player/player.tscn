@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://vvtltf1wnwk0"]
+[gd_scene load_steps=7 format=3 uid="uid://vvtltf1wnwk0"]
 
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/ring_draw.gd" id="1_cqmt1"]
 [ext_resource type="Script" uid="uid://dm861yayksxec" path="res://objects/player/player.gd" id="1_g7ett"]
+[ext_resource type="Script" uid="uid://ibhno6tdd4v5" path="res://objects/player/sprite.gd" id="2_gnkmh"]
 [ext_resource type="Script" uid="uid://bfdtp1ueqngy8" path="res://components/health/hitbox.gd" id="3_jnjyq"]
 [ext_resource type="Script" uid="uid://btoi6jrnw5aeg" path="res://components/health/health.gd" id="4_gnkmh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gnkmh"]
+resource_local_to_scene = true
+font_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+outline_size = 4
+outline_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+shadow_size = 2
+shadow_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
+shadow_offset = Vector2(0, 1.5)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_g7ett")
 
 [node name="Sprite" type="Node2D" parent="."]
+script = ExtResource("2_gnkmh")
 
 [node name="Shadow" type="Node2D" parent="Sprite"]
 position = Vector2(0, 4)
@@ -92,6 +103,16 @@ position = Vector2(10, -7)
 [node name="RightEyeFacingLeft" type="Node2D" parent="Sprite"]
 position = Vector2(3, 1)
 
+[node name="AuthLabel" type="Label" parent="Sprite"]
+unique_name_in_owner = true
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = -14.0
+text = "YOU"
+label_settings = SubResource("LabelSettings_gnkmh")
+horizontal_alignment = 1
+
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("3_jnjyq")
 health = NodePath("Health")
@@ -100,3 +121,8 @@ metadata/_custom_type_script = "uid://bfdtp1ueqngy8"
 [node name="Health" type="Node" parent="Hitbox"]
 script = ExtResource("4_gnkmh")
 metadata/_custom_type_script = "uid://btoi6jrnw5aeg"
+
+[node name="RpcTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="RpcTimer" to="." method="_on_timer_timeout"]

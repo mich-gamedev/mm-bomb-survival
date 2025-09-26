@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Bomb Survival (Makey Makey)"
-run/main_scene="uid://dgodrsnkfcald"
+run/main_scene="uid://bax6du6fw40m"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Lobby="*res://components/networking/lobby.gd"
 
 [display]
 
@@ -21,6 +25,16 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://components/": "orange",
+"res://objects/": "yellow",
+"res://resources/": "green",
+"res://scenes/": "teal"
+}
 
 [gui]
 

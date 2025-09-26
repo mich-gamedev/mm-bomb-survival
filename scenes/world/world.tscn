@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dgodrsnkfcald"]
 
-[ext_resource type="PackedScene" uid="uid://vvtltf1wnwk0" path="res://objects/player/player.tscn" id="1_dphjl"]
+[ext_resource type="Script" uid="uid://b44d2ts2vrabm" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="Shader" uid="uid://cmwh63opj4vnq" path="res://resources/shaders/bubble_noise.gdshader" id="1_sl2e5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rhad"]
@@ -53,6 +53,7 @@ shadow_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
 shadow_offset = Vector2(0, 1.5)
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_1fp7r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
@@ -171,9 +172,6 @@ offset_right = 66.0
 offset_bottom = 230.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_dphjl")
 
-[node name="Player" parent="." instance=ExtResource("1_dphjl")]
-position = Vector2(139, 315)
-
 [node name="Positions" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -276,3 +274,10 @@ theme_override_colors/font_color = Color(0.4, 0.36078432, 0.32941177, 1)
 text = "╰╴0╶╯"
 label_settings = SubResource("LabelSettings_dphjl")
 horizontal_alignment = 1
+
+[node name="Players" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://vvtltf1wnwk0")
+spawn_path = NodePath("../Players")
