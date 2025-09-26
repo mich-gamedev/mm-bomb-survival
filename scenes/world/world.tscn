@@ -281,3 +281,5 @@ unique_name_in_owner = true
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://vvtltf1wnwk0")
 spawn_path = NodePath("../Players")
+
+[node name="BombTimer" type="Timer" parent="."]
