@@ -19,4 +19,5 @@ metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
 [resource]
 script = ExtResource("2_75i1m")
 data = Array[ExtResource("1_afs3v")]([SubResource("Resource_eyycj"), SubResource("Resource_iq54b")])
+minimum_time = 0.5
 metadata/_custom_type_script = "uid://d2bvc7ndv3pyf"

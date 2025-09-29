@@ -350,7 +350,7 @@ tracks/13/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q0sle"]
 _data = {
 &"RESET": SubResource("Animation_r2m6f"),
-&"fall": SubResource("Animation_jowxv")
+&"spawn": SubResource("Animation_jowxv")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jowxv"]
@@ -415,11 +415,12 @@ radius = 0.0
 draw_color = Color(0.99607843, 0.5019608, 0.09803922, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SpawnAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_q0sle")
 }
-autoplay = "fall"
+autoplay = "spawn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 315)

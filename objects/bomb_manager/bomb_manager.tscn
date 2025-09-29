@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://5bax8muvxfdg"]
+
+[ext_resource type="Script" uid="uid://dq4afx3efp5ix" path="res://objects/bomb_manager/bomb_manager.gd" id="1_jr8l0"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_jr8l0")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
