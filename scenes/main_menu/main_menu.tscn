@@ -18,12 +18,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = -29.0
-offset_right = 86.0
-offset_bottom = 29.0
+offset_left = -105.64
+offset_top = -60.0
+offset_right = 105.64
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="IP" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "IP (def: localhost)"
 
 [node name="Name" type="LineEdit" parent="VBoxContainer"]
 unique_name_in_owner = true

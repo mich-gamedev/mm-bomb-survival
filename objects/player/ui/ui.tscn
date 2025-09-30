@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo1l2qcxnll0h"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/ring_draw.gd" id="1_8hmc8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kowqw"]
+bg_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+skew = Vector2(1, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 4
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7xlj"]
+bg_color = Color(0.72156864, 0.73333335, 0.14901961, 1)
+skew = Vector2(-1, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 4
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kowqw")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Control" type="Control" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="RingDraw" type="Node2D" parent="Control/MarginContainer/Control"]
+script = ExtResource("1_8hmc8")
+draw_color = Color(0.9607843, 1, 0.9098039, 0)
+fill_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Control2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7xlj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Control" type="Control" parent="Control2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="RingDraw" type="Node2D" parent="Control2/MarginContainer/Control"]
+script = ExtResource("1_8hmc8")
+draw_color = Color(0.9607843, 1, 0.9098039, 0)
+fill_color = Color(0.72156864, 0.73333335, 0.14901961, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"

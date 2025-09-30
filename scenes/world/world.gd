@@ -4,6 +4,7 @@ const PLAYER = preload("uid://vvtltf1wnwk0")
 
 func _ready() -> void:
 	if multiplayer.is_server():
+		BombManager.initialize()
 		print("is server")
 		for i in Lobby.players:
 			print(i)

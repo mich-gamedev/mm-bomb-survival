@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Lobby="*res://components/networking/lobby.gd"
+BombManager="*res://objects/bomb_manager/bomb_manager.tscn"
 
 [display]
 
@@ -38,6 +39,7 @@ folder_colors={
 
 [gui]
 
+common/snap_controls_to_pixels=false
 theme/custom_font="uid://dbrr57erdx1e5"
 
 [input]

@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="BombPattern" load_steps=12 format=3 uid="uid://w7of2swevpdb"]
+
+[ext_resource type="Script" uid="uid://cqlrx2ay12m5f" path="res://resources/bomb_pattern/bomb_data.gd" id="1_rtrpd"]
+[ext_resource type="PackedScene" uid="uid://r1xb4yyd3200" path="res://objects/attacks/basic_bomb/bomb.tscn" id="2_mevly"]
+[ext_resource type="Script" uid="uid://d2bvc7ndv3pyf" path="res://resources/bomb_pattern/bomb_pattern.gd" id="2_nobip"]
+
+[sub_resource type="Resource" id="Resource_3y7ak"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+possible_positions = 1
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_o72i6"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+delay_sec = 0.1
+possible_positions = 2
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_xrf78"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+delay_sec = 0.2
+possible_positions = 4
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_jluye"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+delay_sec = 0.3
+possible_positions = 8
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_6agup"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+delay_sec = 1.5
+possible_positions = 64
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_nobip"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+delay_sec = 1.6
+possible_positions = 128
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_n3kgd"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+delay_sec = 1.7
+possible_positions = 256
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_mevly"]
+script = ExtResource("1_rtrpd")
+scene = ExtResource("2_mevly")
+delay_sec = 1.8
+possible_positions = 512
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[resource]
+script = ExtResource("2_nobip")
+data = Array[ExtResource("1_rtrpd")]([SubResource("Resource_3y7ak"), SubResource("Resource_o72i6"), SubResource("Resource_xrf78"), SubResource("Resource_jluye"), SubResource("Resource_6agup"), SubResource("Resource_nobip"), SubResource("Resource_n3kgd"), SubResource("Resource_mevly")])
+minimum_time = 3.0
+metadata/_custom_type_script = "uid://d2bvc7ndv3pyf"

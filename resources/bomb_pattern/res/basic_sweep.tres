@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="BombPattern" load_steps=9 format=3 uid="uid://emak8j2qc5wr"]
+
+[ext_resource type="Script" uid="uid://cqlrx2ay12m5f" path="res://resources/bomb_pattern/bomb_data.gd" id="1_y0vef"]
+[ext_resource type="PackedScene" uid="uid://r1xb4yyd3200" path="res://objects/attacks/basic_bomb/bomb.tscn" id="2_qhv4k"]
+[ext_resource type="Script" uid="uid://d2bvc7ndv3pyf" path="res://resources/bomb_pattern/bomb_pattern.gd" id="2_tlixe"]
+
+[sub_resource type="Resource" id="Resource_momqx"]
+script = ExtResource("1_y0vef")
+scene = ExtResource("2_qhv4k")
+possible_positions = 1
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_n44a4"]
+script = ExtResource("1_y0vef")
+scene = ExtResource("2_qhv4k")
+delay_sec = 0.5
+possible_positions = 4
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_7xtmc"]
+script = ExtResource("1_y0vef")
+scene = ExtResource("2_qhv4k")
+delay_sec = 1.0
+possible_positions = 16
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_dgl7x"]
+script = ExtResource("1_y0vef")
+scene = ExtResource("2_qhv4k")
+delay_sec = 1.5
+possible_positions = 64
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[sub_resource type="Resource" id="Resource_60iwq"]
+script = ExtResource("1_y0vef")
+scene = ExtResource("2_qhv4k")
+delay_sec = 2.0
+possible_positions = 256
+metadata/_custom_type_script = "uid://cqlrx2ay12m5f"
+
+[resource]
+script = ExtResource("2_tlixe")
+data = Array[ExtResource("1_y0vef")]([SubResource("Resource_momqx"), SubResource("Resource_n44a4"), SubResource("Resource_7xtmc"), SubResource("Resource_dgl7x"), SubResource("Resource_60iwq")])
+minimum_time = 2.5
+metadata/_custom_type_script = "uid://d2bvc7ndv3pyf"
