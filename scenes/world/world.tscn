@@ -1,8 +1,48 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgodrsnkfcald"]
+[gd_scene load_steps=20 format=3 uid="uid://dgodrsnkfcald"]
 
 [ext_resource type="Script" uid="uid://b44d2ts2vrabm" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="Shader" uid="uid://cmwh63opj4vnq" path="res://resources/shaders/bubble_noise.gdshader" id="1_sl2e5"]
 [ext_resource type="Script" uid="uid://lhefolsrk1kc" path="res://scenes/world/animation_player.gd" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://bo1l2qcxnll0h" path="res://objects/player/ui/ui.tscn" id="4_6m72w"]
+
+[sub_resource type="Animation" id="Animation_v5dby"]
+resource_name = "shake"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(6.2766533, 6.2766533, 6.2766533, 6.2766533),
+"update": 0,
+"values": [Vector2(-1, -2), Vector2(2, 1), Vector2(-3, -1), Vector2(-1, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_t5ptc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bq33v"]
+_data = {
+&"RESET": SubResource("Animation_t5ptc"),
+&"shake": SubResource("Animation_v5dby")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rhad"]
 bg_color = Color(0.23529412, 0.21960784, 0.21176471, 1)
@@ -52,22 +92,6 @@ outline_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
 shadow_size = 2
 shadow_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
 shadow_offset = Vector2(0, 1.5)
-
-[sub_resource type="Animation" id="Animation_sl2e5"]
-resource_name = "waiting_for_players"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["[center][wave]Waiting for players..."]
-}
 
 [sub_resource type="Animation" id="Animation_1fp7r"]
 length = 0.001
@@ -163,6 +187,22 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_sl2e5"]
+resource_name = "waiting_for_players"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[center][wave]Waiting for players..."]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v5dby"]
 _data = {
 &"RESET": SubResource("Animation_1fp7r"),
@@ -175,6 +215,12 @@ script = ExtResource("1_1fp7r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
+
+[node name="CameraAnim" type="AnimationPlayer" parent="Camera2D"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_bq33v")
+}
 
 [node name="Room" type="Panel" parent="."]
 offset_left = 64.0
@@ -438,3 +484,7 @@ bbcode_enabled = true
 text = "[wave]Waiting for players..."
 fit_content = true
 autowrap_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("4_6m72w")]

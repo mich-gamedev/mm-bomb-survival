@@ -7,11 +7,13 @@ const OPP_COLOR  := Color("98971a")
 @onready var left_eye: RingDraw = $Sprite/LeftEye
 @onready var right_eye: RingDraw = $Sprite/RightEye
 @onready var auth_label: Label = %AuthLabel
+@onready var health: Health = $Hitbox/Health
 
 @onready var left_eye_facing_right: Node2D = $Sprite/LeftEyeFacingRight
 @onready var left_eye_facing_left: Node2D = $Sprite/LeftEyeFacingLeft
 @onready var right_eye_facing_right: Node2D = $Sprite/RightEyeFacingRight
 @onready var right_eye_facing_left: Node2D = $Sprite/RightEyeFacingLeft
+@onready var hitflash: AnimationPlayer = $Sprite/Hitflash
 
 @onready var rpc_timer: Timer = $RpcTimer
 
@@ -64,7 +66,7 @@ func _on_timer_timeout() -> void:
 	sprite.scale = Vector2(2, .25)
 	if twn: twn.kill()
 	twn = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).set_parallel()
-	twn.tween_property(sprite, ^"global_position", global_position, .5)
+	twn.tween_property(sprite, ^"global_position", global_position, .33)
 	twn.tween_property(sprite, ^"scale", Vector2.ONE, .75).set_trans(Tween.TRANS_ELASTIC)
 	twn.tween_property(
 		left_eye,
@@ -79,3 +81,22 @@ func _on_timer_timeout() -> void:
 		1
 	)
 	return
+
+
+
+func _on_health_harmable_again() -> void:
+	hitflash.play(&"RESET")
+
+
+func _on_health_harmed(amount: float) -> void:
+	hitflash.play(&"hitflash")
+	hitflash.queue(&"invincible")
+	if is_multiplayer_authority():
+		get_tree().current_scene.get_node(^"%CameraAnim").play(&"shake")
+		await get_tree().create_timer(.2).timeout
+		get_tree().current_scene.get_node(^"%CameraAnim").play(&"RESET")
+
+
+func _on_health_health_changed(hp: float) -> void:
+	if is_multiplayer_authority():
+		UI.node.display_my_health.rpc(int(health.health))

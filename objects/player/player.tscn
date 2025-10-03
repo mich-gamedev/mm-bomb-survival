@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://vvtltf1wnwk0"]
+[gd_scene load_steps=12 format=3 uid="uid://vvtltf1wnwk0"]
 
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/ring_draw.gd" id="1_cqmt1"]
 [ext_resource type="Script" uid="uid://dm861yayksxec" path="res://objects/player/player.gd" id="1_g7ett"]
@@ -15,7 +15,78 @@ shadow_size = 2
 shadow_color = Color(0.08235294, 0.08627451, 0.08627451, 1)
 shadow_offset = Vector2(0, 1.5)
 
-[node name="Player" type="Node2D"]
+[sub_resource type="Animation" id="Animation_xkryw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitOverlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ow0dq"]
+resource_name = "hitflash"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_gnkmh"]
+resource_name = "invincible"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ow0dq"]
+_data = {
+&"RESET": SubResource("Animation_xkryw"),
+&"hitflash": SubResource("Animation_ow0dq"),
+&"invincible": SubResource("Animation_gnkmh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnkmh"]
+radius = 12.0
+
+[node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_g7ett")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -113,16 +184,59 @@ text = "YOU"
 label_settings = SubResource("LabelSettings_gnkmh")
 horizontal_alignment = 1
 
-[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+[node name="HitOverlay" type="Node2D" parent="Sprite"]
+visible = false
+
+[node name="Body2" type="Node2D" parent="Sprite/HitOverlay"]
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(1, 0.75)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 12.0
+draw_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+fill_color = Color(0.9843137, 0.94509804, 0.78039217, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Body3" type="ColorRect" parent="Sprite/HitOverlay"]
+offset_left = -12.0
+offset_top = -3.0
+offset_right = 12.0
+color = Color(0.9843137, 0.94509804, 0.78039217, 1)
+
+[node name="Body" type="Node2D" parent="Sprite/HitOverlay"]
+position = Vector2(0, -3)
+script = ExtResource("1_cqmt1")
+width = 0.0
+radius = 12.0
+draw_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+fill_color = Color(0.9843137, 0.94509804, 0.78039217, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Hitflash" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_ow0dq")
+}
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["player_hitbox"]]
 script = ExtResource("3_jnjyq")
 health = NodePath("Health")
 metadata/_custom_type_script = "uid://bfdtp1ueqngy8"
 
 [node name="Health" type="Node" parent="Hitbox"]
 script = ExtResource("4_gnkmh")
+max_health = 3.0
+invincibility_time = 3.0
+has_invincibility = true
 metadata/_custom_type_script = "uid://btoi6jrnw5aeg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_gnkmh")
 
 [node name="RpcTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[connection signal="harmable_again" from="Hitbox/Health" to="." method="_on_health_harmable_again"]
+[connection signal="harmed" from="Hitbox/Health" to="." method="_on_health_harmed"]
+[connection signal="health_changed" from="Hitbox/Health" to="." method="_on_health_health_changed"]
 [connection signal="timeout" from="RpcTimer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bax6du6fw40m"]
+[gd_scene load_steps=3 format=3 uid="uid://bax6du6fw40m"]
 
 [ext_resource type="Script" uid="uid://c4itwthuhxsgd" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+[ext_resource type="PackedScene" uid="uid://b6yerdtx4hvrg" path="res://objects/ui/button/button.tscn" id="2_0ebjn"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -25,6 +26,11 @@ offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ErrorLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9843137, 0.28627452, 0.20392157, 1)
+
 [node name="IP" type="LineEdit" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -35,15 +41,18 @@ unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Name here..."
 
-[node name="Host" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="Host" parent="VBoxContainer" instance=ExtResource("2_0ebjn")]
+custom_minimum_size = Vector2(87, 18.333334)
 layout_mode = 2
-text = "Host game!!!!!!"
+button_text = "Host game"
 
-[node name="Join" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="Join" parent="VBoxContainer" instance=ExtResource("2_0ebjn")]
+custom_minimum_size = Vector2(87, 18.333334)
 layout_mode = 2
-text = "Join game!!!!!!!!"
+button_text = "Join game"
+
+[node name="Button" parent="VBoxContainer" instance=ExtResource("2_0ebjn")]
+layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]

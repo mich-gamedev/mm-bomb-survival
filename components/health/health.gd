@@ -7,7 +7,10 @@ class_name Health
 @export var invincibility_time: float = 0.05
 @export var has_invincibility: bool = false
 
-@onready var health := clampf(starting_health, 0.0, max_health)
+@onready var health := clampf(starting_health, 0.0, max_health):
+	set(v):
+		health = v
+		health_changed.emit(v)
 var can_harm := true
 
 
@@ -16,12 +19,15 @@ signal healed(amount: float)
 signal harmed(amount: float)
 signal died
 signal harmable_again
+signal health_changed(hp: float)
 
 enum Team {PLAYER, ENEMY}
+
+@rpc("authority", "call_local", "reliable")
 func harm(amount: float) -> float:
 	if can_harm:
-		harmed.emit(amount)
 		health -= amount
+		harmed.emit(amount)
 		if health <= 0:
 			died.emit()
 
@@ -32,6 +38,7 @@ func harm(amount: float) -> float:
 			can_harm = true
 	return health
 
+@rpc("authority", "call_local", "reliable")
 func heal(amount: float) -> float:
 	health += amount
 	health = minf(health, max_health) if max_health > 0 else health

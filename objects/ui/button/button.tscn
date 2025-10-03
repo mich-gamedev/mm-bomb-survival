@@ -1,0 +1,336 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6yerdtx4hvrg"]
+
+[ext_resource type="Script" uid="uid://h08eulcqmehx" path="res://objects/ui/button/button.gd" id="1_xnns6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xnns6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdgvs"]
+resource_local_to_scene = true
+bg_color = Color(0.40784314, 0.6156863, 0.41568628, 1)
+skew = Vector2(1, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_right = 4.0
+shadow_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnns6"]
+resource_local_to_scene = true
+bg_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+skew = Vector2(1, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_right = 4.0
+shadow_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsbq0"]
+bg_color = Color(0.9843137, 0.94509804, 0.78039217, 1)
+skew = Vector2(1, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_right = 4.0
+shadow_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="Animation" id="Animation_klyxb"]
+resource_name = "mouse_entered"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasePanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.11662923, 1),
+"update": 0,
+"values": [Vector2(-1.5, -1.5), Vector2(-3, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BasePanel:theme_override_styles/panel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_fsbq0")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowPanel:theme_override_styles/panel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_xnns6")]
+}
+
+[sub_resource type="Animation" id="Animation_o8d2j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasePanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BasePanel:theme_override_styles/panel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_xnns6")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowPanel:theme_override_styles/panel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_pdgvs")]
+}
+
+[sub_resource type="Animation" id="Animation_k65hy"]
+resource_name = "mouse_exited"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasePanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(0.1250001, 1),
+"update": 0,
+"values": [Vector2(-3, -3), Vector2(-2, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BasePanel:theme_override_styles/panel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_xnns6")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowPanel:theme_override_styles/panel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_pdgvs")]
+}
+
+[sub_resource type="Animation" id="Animation_jitg2"]
+resource_name = "pressed"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasePanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.22531264, 1),
+"update": 0,
+"values": [Vector2(-3, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BasePanel:theme_override_styles/panel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_pdgvs")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowPanel:theme_override_styles/panel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_pdgvs")]
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsfn4"]
+bg_color = Color(0.9843137, 0.94509804, 0.78039217, 1)
+skew = Vector2(1, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_right = 4.0
+shadow_color = Color(0.5568628, 0.7529412, 0.4862745, 1)
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="Animation" id="Animation_8b7vl"]
+resource_name = "released"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasePanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.3186401, 3.1383355, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-4, -4), Vector2(-3, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BasePanel:theme_override_styles/panel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_bsfn4")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowPanel:theme_override_styles/panel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_xnns6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysnc0"]
+_data = {
+&"RESET": SubResource("Animation_o8d2j"),
+&"mouse_entered": SubResource("Animation_klyxb"),
+&"mouse_exited": SubResource("Animation_k65hy"),
+&"pressed": SubResource("Animation_jitg2"),
+&"released": SubResource("Animation_8b7vl")
+}
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(39, 18.333334)
+offset_right = 39.0
+offset_bottom = 18.333334
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xnns6")
+flat = true
+script = ExtResource("1_xnns6")
+button_text = "Test"
+
+[node name="ShadowPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pdgvs")
+
+[node name="BasePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -1.9999981
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xnns6")
+
+[node name="Text" type="Label" parent="BasePanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -9.166667
+offset_right = 19.5
+offset_bottom = 9.166667
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.11372549, 0.1254902, 0.12941177, 1)
+text = "Test"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ysnc0")
+}
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -16,4 +16,5 @@ func harm_hitbox(area: Area2D) -> void:
 		hitbox_entered.emit(area)
 		area.hurtbox_entered.emit(self)
 		if area.health:
-			(area.health as Health).harm(damage)
+			if multiplayer.get_unique_id() == area.get_multiplayer_authority():
+				(area.health as Health).harm.rpc(damage)
